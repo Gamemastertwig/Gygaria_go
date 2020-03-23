@@ -1,0 +1,477 @@
+MAP:
+
+     ------
+     | 26 |
+--------------------------
+| 01 | 02 | 03 | 04 | 05 |
+--------------------------
+| 06 | 07 | 08 | 09 | 10 |
+--------------------------
+| 11 | 12 | 13 | 14 | 15 |
+--------------------------
+| 16 | 17 | 18 | 19 | 20 |
+--------------------------
+| 21 | 22 | 23 | 24 | 25 |
+--------------------------
+
+AREAS:
+
+ID: 01
+Title: Orc Camp
+Discription: You see many small huts that are shabbily made. Two hulking figures stand about the 
+place. They do not seem to be happy that you are in their camp and begine murmuring something at
+you in a guttural language you don’t understand. Then they come towards you with swords raised.
+Connections: South
+Mobs: Orc x2
+Items: None
+Commands: None
+
+ID: 02
+Title: Castle Courtyard
+Discription: As you progress onward, you see that the small castle. There is a large monument 
+with a glowing blue center. As you get closer to the castle, there is a large glowing barrier 
+where the door is at as well. It blocks you from entering the castle. 
+IF (!SEAL && RUMOR) 
+You vaguely remember that some fairy knows about how to get in here. 
+IF (SEAL)
+When the seal is brought close the runes begin to fade and you can OPEN the door. 
+Connections: South (7), East (3)
+Mobs:
+Items:
+Commands: OPEN - [IF (SEAL)]
+
+ID: 03
+Title: Land Slide
+Discription: Whatever was in this place has long worn away from the sands of time. A rock slide 
+at one point blocks the opening to the north that leads up a large cliff. 
+Connections: East (4), South (8), West (2)
+Mobs:
+Items:
+Commands:
+
+ID: 04
+Title: Dense Forest
+Discription: As you wander through the forest, you start to become disoriented. You try to walk 
+through the forest but you find yourself on the outskirts in the exact place you came in. 
+Connections:West (3)
+Mobs:
+Items:
+Commands:
+
+ID: 05
+Title: Backwater Village
+Discription: As you enter the town you notice that buildings are under-maintained, but 
+the building structure leads you to believe that at one time a beautiful place.  
+IF (CANNIBALS)  
+The people of the town seem to be huddled around a large fire. You move closer to investigate. 
+You see that the people are poorly dressed and their clothes are raggedy or worse. Their bodies 
+are unshaven, their hair is matted and they are eating something. They are all tearing at a 
+piece of meat and it looks to be human... Suddenly they all turn to face you, reaching for their 
+primitive weapons and start licking their lips in anticipation. 
+Connections: South (10)
+Mobs: Cannibals x5
+Items:
+Commands:
+
+ID: 06
+Title: Wolves' Den
+Discription: As you continue on your way you see a large cave with an opening too small 
+for you to enter.  
+IF (WOLF)  
+Outside you can see a group of 4 wolves. You don't know how many wolves are there are in 
+total but you know how many are coming your way. 
+Connections: North (1), East (7)
+Mobs: Wolf x4
+Items:
+Commands:
+
+ID: 07
+Title: Spring Meadow
+Discription: As you walk the scenery changes from a beaten path into a soft spring meadow. 
+There are birds chirping and flowers everywhere. You hadn't noticed it at first but the 
+climate has slowly been changing to the perfect temperature.  
+IF (SLEEP && SEAL)  
+Suddenly the seal in your pocket begins to become warm. Every foot step is becoming more 
+difficult. Suddenly a voice breaks out over the air. The voice sings of a soft bed of grass 
+where you can lay your head'. You glance to your right and see a large group of fresh baby 
+clovers. You must FIGHT your urge to slumber. 
+Connections: North (2), East (8), West (6)
+Mobs: Sleep - [IF (SEAL)]
+Items:
+Commands: 
+
+ID: 08
+Title: Crossroads
+Discription: You come to a cross roads. Off to side of the road you see a mound of dirt 
+a child has been playing in.  
+IF (DEMON) 
+A large figure appears before you. It is big terrible and smells like sulfur. You had 
+heard of demons but had assumed they were just a myth. His big bat-like wings beat through 
+the air, but he doesn't seem to be attacking you. Maybe you can TALK to him. 
+Connections: North (3), East (9), South (13), West (7)
+Mobs: Demon
+Items: Potion of Youth
+Commands: TALK, ATTACK
+
+ID: 09
+Title: Bridge
+Discription: The road leads you to a bridge. The bridge is old and well worn. It's the 
+rickety kind that you can feel sway with every step. You are wary of it because you cannot 
+swim. But even that hedgehog guy does water zones and he cannot swim either.
+Connections: East (10), West (8)
+Mobs:
+Items:
+Commands:
+
+ID: 10
+Title: Bone Yard
+Discription: Let's be honest no one wants to be in a bone yard. It's a typical graveyard. 
+Well except for the graves are open and there are skulls on pikes. Ok, so it is a weird 
+graveyard. Just outside the bone yard is a band of what appear to be thieves. Once more 
+all of them are women, and it appears they wish your accompaniment. If you JOIN them you 
+could have riches the likes of which you have never seen... at the price of your princess.  
+IF (SKELETON)  
+You see one grave that is nearly untouched. Upon closer inspection is has a cloak laid over 
+it. Do you GRAB it? 
+IF (GRAB) 
+As you reach for the cloak you hear your wrist pop, but wait. That wasn’t YOUR wrist. The 
+grave soil moves and a skeleton starts to emerging covered in ruins. You have heard of people 
+protecting their graves in this manner, but never actually seen it. At any rate you have made 
+him angry and now he has a bone to pick with you, or off you. The battle ensues 
+Connections: North (5), West (9)
+Mobs: Skeleton
+Items: Cloak of Almost Invisibility
+Commands: GRAB, TALK - [Thieves Ending]
+
+ID: 11
+Title: Fairy Glade
+Discription: As you depart from the boat you see a field covered in clovers and woodland 
+creatures. Before you get the chance you see a glowing fairy. You are clearly attracted to 
+it. Should you TALK to her? 
+Connections: East (12)
+Mobs: Fairy
+Items: Seal of Opening
+Commands: TALK
+
+ID: 12
+Title: Crystal Lake
+Discription: You come to Crystal Lake. Although you cannot recall ever being here before, 
+you realize why it is called Crystal Lake. It's the most reflective body of water you have 
+ever seen. A small river boat is docked on the lake.  
+IF (!COIN) 
+Although it is day time there is a man is shrouded in darkness. The man is wearing a cloak 
+and his figure is trim to a sickly amount. His face is hidden by the cloak but you are almost 
+afraid to look at it. An empty amulet rests on his chest with the word 'death cometh'. At one 
+point it seems to have housed a coin. You must TALK to him to get passage over the lake. 
+Connections: East (13), West (11) - [IF (COIN)]
+Mobs: Death
+Items:
+Commands: TALK
+
+ID: 13
+Title: Caravan
+Discription: If you had thought town was empty before, this was the reason. As you progress 
+down the road you find it impossible not to stare at the gypsies entertaining the throngs of 
+people. Not only do they entertain, but many have stalls where they are selling 'magical' or 
+'enchanted' items. One particular item that catches your interest is a music box that will 
+grant wish if played under a full moon, but for only ten gold coins you think it must be a 
+fake. Deciding this place holds nothing of relevance you continue on your way.  
+Connections: North (8), East (14), South (18), West (12)
+Mobs:
+Items:
+Commands:
+
+ID: 14
+Title: Plains
+Discription: As you step onto the plains a gust of wind blows through the grass rustling 
+it. You remember when you were a child your father to take you to such a place. As you 
+ponder such things a duck shows itself from the brush. You attack but miss startling the 
+mallard and it takes to the air far above your reach. A brown hound dog rises over the grass 
+and chuckles at your misfortune... wait... WHAT THE HECK!?! The turn of events reminds you 
+of your quest and you decide it best not to stand about doing nothing.  
+Connections: East (15), South (19), West (13)
+Mobs:
+Items:
+Commands:
+
+ID: 15
+Title: Desert
+Discription: The grass you had been walking on begins to give way more and more until 
+it is completely gone. In its place is course heat warmed sand. You begin to wonder 
+if it is intelligent to find yourself here, after this entire place has no significance 
+to your journey.  
+IF (SANDWORM)  
+Suddenly there is shifting of the sand below you. As you look down your gaze is met by 
+the thousand teeth of the sand worm! Now is not the time for hesitation... RUN? Or FIGHT? 
+Connections: West (14)
+Mobs: Sandworm
+Items: 
+Commands: RUN, FIGHT
+
+ID: 16
+Title: Grave Keeper's Hovel
+Discription: The grave keeper isn't the hunch back living in a belfry that you had 
+expected. In fact he looks familiar. You're almost sure you know him. As you approach 
+he calls your name. Apparently he was an old friend of your dads. He tells you that 
+your dad saved his life and he wants to repay him by giving you nice land he inherited. 
+You could TAKE the offer, move on, have a family and live into the roomy estate. But 
+wouldn't you always regret letting down your princess? 
+Connections: East(17), South (21)
+Mobs: 
+Items:
+Commands: TAKE - [Deed Ending]
+
+ID: 17
+Title: Town Graveyard
+Discription: It's a town grave yard... what do you want me to say? The graves are all 
+nicely kept and there is a large mausoleum in the center. (Probably were the rich are 
+laid to rest.)   
+IF (!COIN)  
+You also feel a need to INSPECT the mausoleum. 
+IF (INSPECT) 
+The mausoleum door is unlocked. You are surprised at the cleanliness of the place. 
+There in the middle of the family insignia is deaths coin. 'That was easy.' you smirk. 
+As you turn you are greeted by an shambling figure. The zombie convulses and attacks 
+without warning. 
+Connections: East (18), West (16)
+Mobs: Zombie
+Items: Death's Coin
+Commands: INSPECT
+
+ID: 18
+Title: Town
+Discription: You see a town square. People are busy doing there every day jobs and seem 
+not to notice you.  
+IF (!ARMOR)  
+An old man dressed in purple robes keeps waving at you. It looks like he wants to TALK. 
+IF (ARMOR && !CLOAK) 
+You notice a lady in rags. You are sure she was not here before. She keeps staring at 
+you maybe she wants to TALK. 
+Connections: North (13), East (19), South (23), West (17)
+Mobs: Old Man, Lady
+Items:
+Commands: TALK
+
+ID: 19
+Title: Farm
+Discription: You arrive on a field. The corn and beans grow to about mid thigh, being as 
+it is midsummer and the cattle graze in their pins. A small house rest on a hill near-by 
+beyond that there appears to be nothing of interest. Upon further inspection a farmer is 
+diligently at work tending to his crop. His gruff appearance and the way he's been eyeing 
+you lead you to believe he's not much for talking.  
+Connections: North (14), East (20), South (24), West (18)
+Mobs: 
+Items:
+Commands: 
+
+ID: 20
+Title: Spider Forest
+Discription: Upon entering the forest you begin to get an eerie feeling. Looking around 
+you, you notice the trees seem to get closer and closer. You also notice many webs which 
+appear to be made of metallic silk.  
+IF (SPIDER)  
+In the web is some armor. As you approach the web a thick string of saliva drops just inches 
+from your foot, bubbling at the  grass in front of you dissolving it straight to the soil. 
+Looking above you see the figure of a large hairy eight legged being. As it encroaches upon 
+you see a gargantuan spider. 
+Connections: West (19)
+Mobs: Gargantuan Spider
+Items: Armor of Spider Silk
+Commands:
+
+ID: 21
+Title: Mountain
+Discription: As you have travelled past the Grave Keepers home, you find yourself at the 
+base of a mountain. Surely you can climb the mountain, but why? You have heard rumors that 
+there is a dragon that lives near here. Best not wake a sleeping dragon and just go back 
+before something bad happens. 
+Connections: North (16)
+Mobs:
+Items:
+Commands:
+
+ID: 22
+Title: Dragon's Lair
+Discription: You have come to a cave. It is a lot warmer than you would have expected from 
+a cave this size and being located this close to the ocean. Smell of decay is heavy in the 
+air and ground is littered with mangled corpses. Oddly the bones are bare although most 
+have large incisions from what appears to be very large teeth.  
+IF (!SWORD)   
+On the far side of the cave is the slumbering mass of a large black dragon. Behind it lays 
+a claymore lodged in gold. The hilt is golden and inlayed with precious gems. You curse you 
+luck knowing that even in this light there is no way to get passed him with what you have. 
+Why could it not be a giant turtle? You may have to FIGHT your way out of this mess. 
+if (CLOAK && !SWORD)  
+On the far side of the cave is the slumbering mass of a lizard. Behind it lays a claymore 
+lodged in gold. The hilt is golden and inlayed with precious gems. Now that you have the 
+cloak you may be able to SNEAK past it and grab the sword.  
+IF (SNEAK && CLOAK) 
+You place on the Cloak of Almost Invisibility and begin to fade. You do not fade completely 
+but with the lower light of the cave you are a lot hard to see. As you creep past the dragon, 
+it begins to move then look around it stares in your direction for what seems like forever. 
+Finally it seems content that no one is in the cave with it and it goes back to sleep. You 
+continue your sneak around and get the sword. You experience no troubles on your return trip.  
+IF (TALK)
+On the far side of the cave is the slumbering mass of a lizard. Behind it lays a claymore 
+lodged in gold. The hilt is golden and inlayed with precious gems. You have heard that dragons 
+love riddles.  Maybe you can stump the dragon to get access to what is on the other side. 
+Hopefully you are smarter than the dragon. Otherwise you may end up as dinner. 
+Connections: East (23)
+Mobs: Dragon
+Items: Sword of Dragon's Breath
+Commands: SNEAK, FIGHT, TALK
+
+ID: 23
+Title: Docks
+Discription: As you approach the docks you see a young man who is frantic. Upon inquiry 
+he tells you he is short a crew man and can't make his voyage without the extra man power. 
+He offers you a healthy sum of gold to join his expedition. In doing so you could 
+effectively disregard your troubles in finding the princess and become a seaman. Besides 
+heroes are overrated... or are they? You could JOIN the captain for a life on the sea. 
+Connections: North (18), East (24), West (22)
+Mobs:
+Items:
+Commands: JOIN - [Sailors Ending]
+
+ID: 24
+Title: Ocean
+Discription: As you step on to the sandy shore the ocean laps at your feet. It reminds you 
+of a romance you saw once, but all those people died on a boat anyways. Other than that 
+nothing catches your interest.  
+Connections: North (19), East (25), West (23)
+Mobs:
+Items:
+Commands:
+
+ID: 25
+Title: Cliff
+Discription: As you travel on the ocean, it leads to a large waterfall and a very large 
+cliff. You doubt you can sail a boat up a cliff, so and as you progress further you see it 
+now surrounds you to the north, east and west. You might as well go back until they invent 
+some kind of flying ship. 
+Connections: West (24)
+Mobs:
+Items:
+Commands:
+
+ID: 26
+Title: Castle
+Discription: You are now inside the castle having completed most of your quest. You have 
+beaten a dragon, talked with a demon, slain zombies and cannibals as well. So many foes 
+have vanquished before you, but so close to the end, you know your most difficult battle 
+is before you. In this royal palace, it is covered in luxury. With large statues and 
+comfortable thrones. 
+Connections: 
+Mobs: Wizard
+Items: 
+Commands: 
+
+ENDINGS:
+
+ID: 01
+Title: Wizard Ending 
+Discription: As you strike the final blow the wizard falls to the ground in a whimper. 
+'We could have adopted beautiful children' he coughs. You turn to see a chunky little 
+mushroom headed man in a cage. As you open the cage door he remarks to you that your 
+princess is in another castle. You punch him in his big spotted head and continue your 
+life until one day someone says that a giant turtle kidnapped their princess and toke 
+her to a pipe world.          
+A hero's work is never done... 
+
+ID: 02 
+Title: Thieves Ending
+Discription: As you approach the girls begin to talk in a foreign language and flash 
+you a smile. They take you to their ship, and pull you aboard. You smile at the fact 
+of how they make over you and you travel on the sea for many months. When you arrive 
+at shore you are quickly shackled and thrown into a cage the women laugh and sail 
+away. Shortly after you are taken to a market where many foreigners poke and prod at 
+you. You are taken to a large house where you are forced to work as a slave. You live 
+in a hole in the ground for many months and beaten regularly. One day you try to run 
+away but being that you don’t know the area you are quickly found and punished. You 
+return to the cage minus a few fingers and aren't given any medical treatment. A few 
+months later you die from a combination of gangrene, black plague, and malnourishment. 
+
+ID: 03
+Title: Sailors Ending
+Discription: You climb on the boat and become comfortable as a sailor. It turns out it 
+was a fishing boat and you make a plentiful haul for a few years. One year you are 
+informed of a rare group of Gygarian trout in the northern oceans. Your crew travels 
+north and after many months they find a large school of them. Gygarian trout are have 
+a very distinct taste and are highly coveted. As you begin to haul in your nets the 
+net is pulled hard. The crew looks over and runs, as you lean over the side of the ship 
+a sharp tendril shoots through your stomach and a mighty kraken emerges. It appears he 
+also has a taste for the trout and didn’t like you spoiling his catch. The crew cuts 
+the nets and sails away as you hang from the tentacle. You try to fight it but your 
+strength is drained from the injury. He tears you apart and the last thing you hear are 
+your own bloody screams and the crunching of your bones. 
+
+ID: 04
+Title: Deed Ending
+Discription: You move to the country and live in a manor on the outskirts of town. Soon 
+after, you meet a spouse and fall in love. Being that you are a young couple a few years 
+later you have children, two twins. You live in peace for a few years and even become 
+popular among the town. One day someone begins leaving threats of death on your door. 
+Your spouse is terrified and asks you to move them out immediately. Reluctantly you begin 
+to try and pack. About a week later as you are packing a man comes down the stairs with 
+your children and hands you a knife and tells you to kill your children. You refuse and 
+he tells you he will torture your entire family and that this is giving them an easy way 
+out. Reluctantly you take the knife and try to end your kids' life. Unable to perform the 
+deed you quickly turn the knife on yourself. As your life force seeps from your body, you 
+think of how it may have been different if you had stayed and helped the princess. 
+
+DIALOG
+
+ID: 01
+Title: OLD MAN
+Dialog: It's about time you got here! I have been waiting almost 2 weeks for your arrival. 
+You need to hurry if you are to save the princess in the castle to the north which is sealed 
+with magic, the fairy to the west may know more of how to break the seal. You will need to 
+get better armor and a better weapon. I hear the forest to the east may have magical armor. 
+I also hear the dragon to the south-west has a magical sword. Hurry now your adventure awaits 
+you. (With that the old man vanishes.)   
+
+ID: 02 
+Title: LADY
+Dialog: So you see me? Then surely you will be the one to save us all. Your future holds great 
+power but only you can unlock it. Your power is not that of a dragon. They say a cloak can be 
+found in a bone yard to the north. Make haste sparrow for your fate is that of our kingdom's.                      
+(With that the lady in rages vanishes.)  
+
+ID: 03
+Title: DEATH
+Dialog: I cannot let you pass until I get me coin back. A wealth man tricked me and toke it, 
+but I curse him to an early death. He should be buried near town. I cannot leave here, get it 
+for me and I will grant you free passage for life.   
+
+ID: 04
+Title: DEMON
+Dialog: You are not the one that called me here. I have this Potion of Youth you can have if 
+you sell me your soul or defeat me in battle. Do we make a DEAL or FIGHT?  
+
+ID: 05
+Title: DEMON - DEAL
+Dialog: I do not have need of your soul as of yet, but I will return when I do...  
+(With that the demon takes flight and vanishes.) 
+
+ID: 06
+Title: FAIRY  
+Dialog: I don't want to speak to you unless you have a potion of youth. That demon stole from 
+me at the crossroads.                                       
+
+ID: 07
+Title: FAIRY - POTION
+Dialog: Thanks for getting the potion. This potion is only for magical beings. If a human had 
+drank this they would have turned into a baby or young child. Here is a Seal of Opening to enter 
+the castle door. 
+
+ID: 08 
+Title: FAIRY - AFTER 
+Dialog: I have nothing further to say to you. 
+
+ID: 09
+Title: WIZARD
+Dialog: How dare you enter my castle... and with those dirty boots! I made this castle from the 
+ground up and do you show respect? No, you just tromp all around like you're the king. I cannot 
+believe the nerve of you... I mean honestly. Ugh! I'm the most powerful wizard in the land and 
+you are just a worm. I have killed stronger men then you in my sl... 
+(Before he gets a chance to finish his monologue you take a good slice out of his arm.)
