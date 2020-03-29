@@ -158,12 +158,15 @@ func CreateGygaria() {
 
 	// Orc Camp
 	orcCamp := storycell.MapCell{ID: 1.0, Title: "", Disc: ""}
+	orcCamp.Mobs = append(orcCamp.Mobs, orc1)
+	orcCamp.Mobs = append(orcCamp.Mobs, orc2)
 	//Conns []MapConn
 	//Mobs  []Mob
 	//Items []Item
 	cells = append(cells, orcCamp)
 
 	// Orc Camp (Empty)
+
 	// Castle Courtyard
 	// Castle Couttyard (Seal)
 	// Castle (Wizard Ending)
