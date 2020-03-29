@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        ​<!-- <meta http-equiv="refresh" content="3"/>  //-->
+        <link rel="stylesheet" href="css/default.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+        <title>Go-Secure Visual Interface Tool</title>
+    </head>
+    <body>
+        <table class="gameTable">
+            <thead>
+                <tr>
+                    <th>{{.MapCell.Title}}</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{.MapCell.Disc}}</td>
+                    <td>{{.FirewallBody}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">
+                        <div class="links"><a href="#">&laquo;</a> <a href="#">1</a> </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <br>
+          
+    </body>
+</html>
