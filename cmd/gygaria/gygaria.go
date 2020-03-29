@@ -88,35 +88,81 @@ func CreateGygaria() {
 	// ****************
 	// ** Mobs       **
 	// ****************
-	// var mobs []storycell.Mob
+	var mobs []storycell.Mob
 
 	// Orc 1
+	orc1 := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, orc1)
 	// Orc 2
+	orc2 := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, orc2)
 	// Cannibal 1
+	cannibal1 := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, cannibal1)
 	// Cannibal 2
+	cannibal2 := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, cannibal2)
 	// Cannibal 3
+	cannibal3 := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, cannibal3)
 	// Cannibal 4
+	cannibal4 := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, cannibal4)
 	// Cannibal 5
+	cannibal5 := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, cannibal5)
 	// Wolf 1
+	wolf1 := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, wolf1)
 	// Wolf 2
+	wolf2 := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, wolf2)
 	// Wolf 3
+	wolf3 := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, wolf3)
 	// Wolf 4
+	wolf4 := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, wolf4)
 	// Sleep
+	sleep := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, sleep)
 	// Demon
+	demonAttack := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, demonAttack)
 	// Skeleton 1
+	skele1 := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, skele1)
 	// Skeleton 2
+	skele2 := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, skele2)
 	// Sandworm
+	sandworm := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, sandworm)
 	// Zombie
+	zombie := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, zombie)
 	// Giant Spider
+	spider := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, spider)
 	// Dragon
+	dragonAttack := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, dragonAttack)
 	// Wizard
+	wizardAttack := storycell.Mob{Name: "", Disc: "", HP: 0, Attack: 0, Defense: 0}
+	mobs = append(mobs, wizardAttack)
 
 	// ****************
 	// ** MapCells   **
 	// ****************
-	// var cells []storycell.MapCell
+	var cells []storycell.MapCell
 
 	// Orc Camp
+	orcCamp := storycell.MapCell{ID: 1.0, Title: "", Disc: ""}
+	//Conns []MapConn
+	//Mobs  []Mob
+	//Items []Item
+	cells = append(cells, orcCamp)
+
 	// Orc Camp (Empty)
 	// Castle Courtyard
 	// Castle Couttyard (Seal)
