@@ -44,7 +44,7 @@ func WriteNew(filename string, message []byte) bool {
 			return false
 		}
 		defer f.Close()
-
+		// fmt.Println("Message: " + string(message))
 		fmt.Fprint(f, string(message))
 	}
 	return true

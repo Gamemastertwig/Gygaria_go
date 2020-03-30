@@ -339,10 +339,10 @@ func CreateGygaria() tbastory.World {
 	// Orc Camp (Empty) (2)
 	// SOUTH (if !wolves)
 	conn4 := tbastory.MapConn{ID: 4, Name: "SOUTH", StartCellID: 2, EndCellID: 12, NeedMobKilled: true}
-	conn4.RecMobIDs = append(conn1.RecMobIDs, wolf1.ID, wolf2.ID, wolf3.ID, wolf4.ID)
+	conn4.RecMobIDs = append(conn4.RecMobIDs, wolf1.ID, wolf2.ID, wolf3.ID, wolf4.ID)
 	// SOUTH (if wolves)
 	conn5 := tbastory.MapConn{ID: 5, Name: "SOUTH", StartCellID: 2, EndCellID: 11, NeedMobAlive: true}
-	conn5.RecMobIDs = append(conn2.RecMobIDs, wolf1.ID, wolf2.ID, wolf3.ID, wolf4.ID)
+	conn5.RecMobIDs = append(conn5.RecMobIDs, wolf1.ID, wolf2.ID, wolf3.ID, wolf4.ID)
 	// Add conns
 	orcCampEmpty.Conns = append(orcCampEmpty.Conns, conn4, conn5)
 

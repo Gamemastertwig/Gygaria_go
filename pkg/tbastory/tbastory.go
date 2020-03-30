@@ -4,8 +4,8 @@ package tbastory
 import (
 	"encoding/json"
 	"fmt"
-
-	"github.com/Gamemastertwig/Gygaria_go/pkg/filewriter"
+	"io/ioutil"
+	"os"
 )
 
 // World is the "One struct to hold them all"
@@ -33,19 +33,19 @@ type MapCell struct {
 // action/command (talk, grab, pickup, run, attack, etc). You can restrict
 // access to a MapConn by adding an item to the recItems slice/array.
 type MapConn struct {
-	ID            int     `json:"id"`
-	Name          string  `json:"name"`
-	StartCellID   float32 `json:"startcellid"`
-	EndCellID     float32 `json:"endcellid"`
-	NeedItem      bool    `json:"needitem"`
-	NeedNotItem   bool    `json:"neednotitem"`
-	RecItemIDs    []int   `json:"recitemids"`
-	NeedMobKilled bool    `json:"needmobkilled"`
-	NeedMobAlive  bool    `json:"needmobalive"`
-	RecMobIDs     []int   `json:"recmobids"`
-	NeedNPCTalk   bool    `json:"neednpctalk"`
-	NeedNPCNoTalk bool    `json:"neednpcnotalk"`
-	RecNPCIDs     []int   `json:"recnpcids"`
+	ID            int    `json:"id"`
+	Name          string `json:"name"`
+	StartCellID   int    `json:"startcellid"`
+	EndCellID     int    `json:"endcellid"`
+	NeedItem      bool   `json:"needitem"`
+	NeedNotItem   bool   `json:"neednotitem"`
+	RecItemIDs    []int  `json:"recitemids"`
+	NeedMobKilled bool   `json:"needmobkilled"`
+	NeedMobAlive  bool   `json:"needmobalive"`
+	RecMobIDs     []int  `json:"recmobids"`
+	NeedNPCTalk   bool   `json:"neednpctalk"`
+	NeedNPCNoTalk bool   `json:"neednpcnotalk"`
+	RecNPCIDs     []int  `json:"recnpcids"`
 }
 
 // Mob is an attackable npc, so it will need hp, attack, and defense, if a mob
@@ -94,23 +94,106 @@ type Player struct {
 	InvIDs  []int  `json:"invids"`
 }
 
-// SaveToJSON converts the data in the world and player structs into json and saves them to a file
-func SaveToJSON(world World, player Player) {
-	worldJSON, err := json.Marshal(world)
+// WorldToJSON converts the data in the world struct into json and saves it to a file
+func WorldToJSON(world World) {
+	// Convert world to JSON []byte
+	worldJSON, err := json.MarshalIndent(world, "", "	")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	// Create file
+	f, err := os.Create("world.json")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	// Write []byte to file
+	l, err := f.Write(worldJSON)
+	if err != nil {
+		fmt.Println(err)
+		f.Close()
+		return
+	}
+
+	// verify bytes written
+	fmt.Println(l, "bytes written successfully")
+	err = f.Close()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+}
+
+// PlayerToJSON converts the data in the player struct into json and saves it to a file
+func PlayerToJSON(player Player) {
+	// Convert player to JSON []byte
+	playerJSON, err := json.MarshalIndent(player, "", "	")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	// Create file
+	f, err := os.Create("player.json")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	// Write []byte to file
+	l, err := f.Write(playerJSON)
+	if err != nil {
+		fmt.Println(err)
+		f.Close()
+		return
+	}
+
+	// verify bytes written
+	fmt.Println(l, "bytes written successfully")
+	err = f.Close()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+}
+
+// JSONToWorld converts a world json save to a world struct
+func JSONToWorld(filename string) World {
+	var world World
+
+	// attempt to open and read file
+	worldJSON, err := ioutil.ReadFile(filename)
 	if err != nil {
 		fmt.Println(err)
 	}
-	playerJSON, err := json.Marshal(player)
+
+	// unmarshal the []byte
+	err = json.Unmarshal(worldJSON, &world)
+	if err != nil {
+		fmt.Println("Unmarchal Failed: " + err.Error())
+	}
+
+	return world
+}
+
+// JSONToPlayer converts a player json save to a player struct
+func JSONToPlayer(filename string) Player {
+	var player Player
+
+	// attempt to open and read file
+	worldJSON, err := ioutil.ReadFile(filename)
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	// fmt.Println(string(worldJSON))
-	// fmt.Println(string(playerJSON))
+	// unmarshal the []byte
+	err = json.Unmarshal(worldJSON, &player)
+	if err != nil {
+		fmt.Println("Unmarchal Failed: " + err.Error())
+	}
 
-	// filewriter.WriteRaw("player.json", playerJSON)
-	// filewriter.WriteRaw("world.json", worldJSON)
-
-	filewriter.WriteNew("player.json", playerJSON)
-	filewriter.WriteNew("world.json", worldJSON)
+	return player
 }
