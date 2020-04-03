@@ -70,6 +70,7 @@ type Item struct {
 	HP      int    `json:"hp"`
 	Attack  int    `json:"attack"`
 	Defense int    `json:"defense"`
+	Used    bool   `json:"used"`
 }
 
 // NPC is a non-attackable npc, that may have a dialog or items, for multiple dialogs it

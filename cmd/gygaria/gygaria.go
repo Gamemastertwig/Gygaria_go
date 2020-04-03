@@ -719,9 +719,9 @@ func CreateGygaria() tbastory.World {
 	conn98.RecItemIDs = append(conn98.RecItemIDs, potion.ID)
 	conn98.RecNPCIDs = append(conn98.RecNPCIDs, demon.ID)
 	// NORTH (if demonAttack && !demonDeal)
-	conn99 := tbastory.MapConn{ID: 99, Name: "NORTH", StartCellID: 29, EndCellID: 17, NeedNotItem: true, NeedNPCNoTalk: true}
+	conn99 := tbastory.MapConn{ID: 99, Name: "NORTH", StartCellID: 29, EndCellID: 17, NeedNotItem: true, NeedNPCTalk: true}
 	conn99.RecItemIDs = append(conn99.RecItemIDs, potion.ID)
-	conn99.RecNPCIDs = append(conn99.RecNPCIDs, demonDeal.ID)
+	conn99.RecNPCIDs = append(conn99.RecNPCIDs, demon.ID)
 	// NORTH (if !demon)
 	conn100 := tbastory.MapConn{ID: 100, Name: "NORTH", StartCellID: 29, EndCellID: 18, NeedItem: true}
 	conn100.RecItemIDs = append(conn100.RecItemIDs, potion.ID)
@@ -731,11 +731,13 @@ func CreateGygaria() tbastory.World {
 	conn102 := tbastory.MapConn{ID: 102, Name: "SOUTH", StartCellID: 29, EndCellID: 38, NeedNPCTalk: true}
 	conn102.RecNPCIDs = append(conn102.RecNPCIDs, oldMan.ID, lady.ID)
 	// SOUTH (if !armor)
-	conn103 := tbastory.MapConn{ID: 103, Name: "SOUTH", StartCellID: 29, EndCellID: 39, NeedNotItem: true}
+	conn103 := tbastory.MapConn{ID: 103, Name: "SOUTH", StartCellID: 29, EndCellID: 39, NeedNotItem: true, NeedNPCNoTalk: true}
 	conn103.RecItemIDs = append(conn103.RecItemIDs, armor.ID)
+	conn103.RecNPCIDs = append(conn103.RecNPCIDs, oldMan.ID)
 	// SOUTH (if !sword && !cloak)
-	conn104 := tbastory.MapConn{ID: 104, Name: "SOUTH", StartCellID: 29, EndCellID: 40, NeedNotItem: true}
+	conn104 := tbastory.MapConn{ID: 104, Name: "SOUTH", StartCellID: 29, EndCellID: 40, NeedNotItem: true, NeedNPCTalk: true}
 	conn104.RecItemIDs = append(conn104.RecItemIDs, sword.ID, cloak.ID)
+	conn104.RecNPCIDs = append(conn104.RecNPCIDs, oldMan.ID)
 	// WEST (if coin)
 	conn105 := tbastory.MapConn{ID: 105, Name: "WEST", StartCellID: 29, EndCellID: 27, NeedItem: true}
 	conn105.RecItemIDs = append(conn105.RecItemIDs, coin.ID)
