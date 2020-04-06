@@ -76,11 +76,12 @@ type Item struct {
 // NPC is a non-attackable npc, that may have a dialog or items, for multiple dialogs it
 // is recommended for a new version of NPC per dialog.
 type NPC struct {
-	ID        int    `json:"id"`
-	Name      string `json:"name"`
-	Dialog    string `json:"dialog"`
-	Items     []Item `json:"items"`
-	HasTalked bool   `json:"hastalked"`
+	ID          int    `json:"id"`
+	Name        string `json:"name"`
+	Dialog      string `json:"dialog"`
+	Items       []Item `json:"items"`
+	HasTalked   bool   `json:"hastalked"`
+	NeededItems []Item `json:"neededitems"`
 }
 
 // Player is a ... well the player :)

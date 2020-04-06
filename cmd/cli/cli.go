@@ -7,10 +7,10 @@ import (
 	"runtime"
 	"strconv"
 
-	"github.com/Gamemastertwig/Gygaria_go/pkg/userinputs"
-
 	"github.com/Gamemastertwig/Gygaria_go/cmd/gygaria"
+	"github.com/Gamemastertwig/Gygaria_go/pkg/randimizer"
 	"github.com/Gamemastertwig/Gygaria_go/pkg/tbastory"
+	"github.com/Gamemastertwig/Gygaria_go/pkg/userinputs"
 )
 
 var clear map[string]func() // create a map for storing clear functions
@@ -18,6 +18,7 @@ var clear map[string]func() // create a map for storing clear functions
 // game/engine variables
 var world tbastory.World
 var player tbastory.Player
+var endGame bool
 
 func init() {
 	world = gygaria.CreateGygaria()
@@ -37,7 +38,9 @@ func init() {
 }
 
 func main() {
-	displayCurrentCell()
+	for !endGame {
+		displayCurrentCell()
+	}
 }
 
 func callClear() {
@@ -60,6 +63,14 @@ func displayCurrentCell() {
 			fmt.Println("")
 			var options []string
 			var optionIds []int
+			var speakerID int
+			var speaker string
+			var spkDialog string
+			var monsterIDs []int
+
+			// testing
+			fmt.Println("| DEBUG Start |")
+
 			for _, conn := range cell.Conns {
 				// control variables
 				connGood := false
@@ -67,7 +78,7 @@ func displayCurrentCell() {
 				count := 0
 
 				// test variables
-				temp := ""
+				// temp := ""
 
 				if conn.NeedItem {
 					// check inv for items in conn
@@ -77,7 +88,7 @@ func displayCurrentCell() {
 							pass++ // if item in inv
 
 							// test logic [remove later]
-							temp = temp + "(" + getItemName(itemID) + " is in inventory)"
+							// temp = temp + "(" + getItemName(itemID) + " is in inventory)"
 						}
 					}
 				}
@@ -89,7 +100,7 @@ func displayCurrentCell() {
 							pass++ // if item not in inv
 
 							// test logic [remove later]
-							temp = temp + "(" + getItemName(itemID) + " is not in inventory)"
+							// temp = temp + "(" + getItemName(itemID) + " is not in inventory)"
 						}
 					}
 				}
@@ -101,7 +112,7 @@ func displayCurrentCell() {
 							pass++ // if mob is alive
 
 							// test logic [remove later]
-							temp = temp + "(" + getMobName(recMobID) + " is alive)"
+							// temp = temp + "(" + getMobName(recMobID) + " is alive)"
 						}
 					}
 				}
@@ -113,7 +124,7 @@ func displayCurrentCell() {
 							pass++ // if mob is dead
 
 							// test logic [remove later]
-							temp = temp + "(" + getMobName(recMobID) + " is dead)"
+							// temp = temp + "(" + getMobName(recMobID) + " is dead)"
 						}
 					}
 				}
@@ -125,7 +136,7 @@ func displayCurrentCell() {
 							pass++ // if npc has talked
 
 							// test logic [remove later]
-							temp = temp + "(" + getNpcName(recNpcID) + " has talked)"
+							// temp = temp + "(" + getNpcName(recNpcID) + " has talked)"
 						}
 					}
 				}
@@ -137,15 +148,15 @@ func displayCurrentCell() {
 							pass++ // if npc has not talked
 
 							// test logic [remove later]
-							temp = temp + "(" + getNpcName(recNpcID) + " has not talked)"
+							// temp = temp + "(" + getNpcName(recNpcID) + " has not talked)"
 						}
 					}
 				}
 
 				// TESTING
-				countStr := "Count: " + strconv.Itoa(count)
-				passStr := "Pass: " + strconv.Itoa(pass)
-				fmt.Println(countStr + " " + passStr + " " + temp + " [" + conn.Name + "]")
+				// countStr := "Count: " + strconv.Itoa(count)
+				// passStr := "Pass: " + strconv.Itoa(pass)
+				// fmt.Println("| " + countStr + " " + passStr + " " + temp + " [" + conn.Name + "] |")
 
 				// if pass and count are equal then they are a valid/confirmed connection
 				if pass == count {
@@ -157,144 +168,196 @@ func displayCurrentCell() {
 					options = append(options, conn.Name)
 					optionIds = append(optionIds, conn.EndCellID)
 				}
+
+				if conn.Name == "TALK" {
+					// should be only one npc
+					speakerID = conn.RecNPCIDs[0]
+					speaker = getNpcName(speakerID)
+					spkDialog = getNpcDialog(speakerID)
+				}
+
+				if conn.Name == "ATTACK" {
+					monsterIDs = append(monsterIDs, conn.RecMobIDs...)
+				}
 			}
+
+			//testing
+			// fmt.Println("| DEBUG end |")
+
+			// add quit option
+			options = append(options, "QUIT")
+
+			fmt.Println("")
 			choice := userinputs.MultiChoiceAnswer("What would you like to do?", options)
+
 			if choice == "TALK" {
-				// do talk things here
-			} else if choice == "ATTACK" {
-				// do attack things here
-			} else {
+				// do talking things
+				// clear screen
+				callClear()
+
+				// show dialog
+				fmt.Println(speaker)
+				fmt.Println(spkDialog)
+				fmt.Println("")
+				// set npc talked
+				setNpcTalked(speakerID)
+				// give items?
+				npcInv := getNpcInv(speakerID)
+				for _, itemID := range npcInv {
+					player.InvIDs = append(player.InvIDs, itemID)
+					fmt.Println("Player recieved " + getItemName(itemID))
+				}
+
+				// pause and wait for user
+				_ = userinputs.RequestAnswer("1: Continue...")
+
+				// set cell to EndCellID
 				for i, op := range options {
 					if op == choice {
 						player.PLocID = player.CLocID
 						player.CLocID = optionIds[i]
-						fmt.Printf("Player.CLocID: %v ", player.CLocID)
-						displayCurrentCell()
+					}
+				}
+			} else if choice == "ATTACK" {
+				// do attack things here
+				for _, monID := range monsterIDs {
+					if attackMob(monID) {
+						// set mob dead
+						setMobDead(monID)
+						// get any items they may have had on them
+						monInv := getMobInv(monID)
+						for _, itemID := range monInv {
+							player.InvIDs = append(player.InvIDs, itemID)
+							fmt.Println("Player recieved " + getItemName(itemID))
+						}
+					} else {
+						// set player dead
+						fmt.Println("Player was slain by " + getMobName(monID))
+
+						// pause and wait for user
+						_ = userinputs.RequestAnswer("1: The End")
+
+						// end game
+						endGame = true
+						return
+					}
+				}
+
+				// pause and wait for user
+				_ = userinputs.RequestAnswer("1: Continue...")
+
+				// set cell to EndCellID
+				for i, op := range options {
+					if op == choice {
+						player.PLocID = player.CLocID
+						player.CLocID = optionIds[i]
+					}
+				}
+			} else if choice == "END" || choice == "QUIT" {
+				// end game
+				endGame = true
+				return
+			} else {
+				// movement commands
+				// add any items found in current cell
+				cellInv := getCellInv(player.CLocID)
+				if len(cellInv) > 0 {
+					// clear screen
+					callClear()
+
+					for _, itemID := range cellInv {
+						player.InvIDs = append(player.InvIDs, itemID)
+						fmt.Println("Player recieved " + getItemName(itemID))
+					}
+
+					// pause and wait for user
+					_ = userinputs.RequestAnswer("1: Continue...")
+				}
+
+				// set cell to EndCellID
+				for i, op := range options {
+					if op == choice {
+						player.PLocID = player.CLocID
+						player.CLocID = optionIds[i]
 					}
 				}
 			}
-			fmt.Println(choice)
 		}
 	}
 	return
 }
 
-func checkHaveItem(itemID int) bool {
-	// check if item is in inv
-	for _, invID := range player.InvIDs {
-		// if item present in inv return true
-		if invID == itemID {
+func attackMob(mobID int) bool {
+	battleLoss := false
+	mobHP := getMobHP(mobID)
+	mobAtt := getMobAtt(mobID)
+	mobDef := getMobDef(mobID)
+	playHP := getPlayersTotalHP()
+	playAtt := getPlayersTotalAtt()
+	playDef := getPlayersTotalDef()
+
+	for !battleLoss {
+		// clear screen
+		callClear()
+		fmt.Println("[Player: " + strconv.Itoa(playHP) + " | " + getMobName(mobID) + ": " + strconv.Itoa(mobHP) + "]")
+		fmt.Println("")
+
+		// player goes first
+		attack := randimizer.IntRandimizer(1, (20 + playAtt))
+		// on successful hit
+		if attack > mobDef {
+			mobHP = mobHP - (attack - mobDef) // diffrense of attack and mob's def
+			fmt.Println("Player dealt " + strconv.Itoa(attack-mobDef) + " points of damage to " + getMobName(mobID))
+		} else {
+			fmt.Println("Player missed " + getMobName(mobID))
+		}
+
+		// mobs turn
+		// first check mobs hp
+		if mobHP > 0 {
+			attack := randimizer.IntRandimizer(1, (20 + mobAtt))
+			if attack > playDef {
+				playHP = playHP - (attack - playDef)
+				fmt.Println(getMobName(mobID) + " dealt " + strconv.Itoa(attack-playDef) + " points of damage to Player")
+				fmt.Println("")
+			} else {
+				fmt.Println(getMobName(mobID) + " missed Player")
+				fmt.Println("")
+			}
+		} else {
+			fmt.Println(getMobName(mobID) + " is Dead")
+			fmt.Println("")
+			// pause and wait for user
+			_ = userinputs.RequestAnswer("1: Continue...")
 			return true
 		}
+
+		// check player's HP
+		if playHP <= 0 {
+			battleLoss = true
+			break
+		}
+
+		// pause and wait for user
+		_ = userinputs.RequestAnswer("1: Next Round...")
+
 	}
-	// otherwise return false
+
 	return false
 }
 
-func getItemName(itemID int) string {
+func getCellInv(cellID int) []int {
+	var itemInv []int
 	// check each cell
 	for _, cell := range world.Cells {
-		// check items in each cell
-		for _, cellItem := range cell.Items {
-			// compaire item(s) with one we are looking for
-			if cellItem.ID == itemID {
-				// if match return cellItem.Name
-				return cellItem.Name
-			}
-		}
-
-		// check each mob in each cell (if not found in cell directly)
-		for _, mob := range cell.Mobs {
-			// check each item on the mobs
-			for _, mobItem := range mob.Items {
-				// compaire item(s) with one we are looking for
-				if mobItem.ID == itemID {
-					// if match return cellItem.Name
-					return mobItem.Name
-				}
-			}
-		}
-
-		// check each npc in each cell (if not found in cell or mobs directly)
-		for _, npc := range cell.NPCs {
-			// check each item on the mobs
-			for _, npcItem := range npc.Items {
-				// compaire item(s) with one we are looking for
-				if npcItem.ID == itemID {
-					// if match return cellItem.Name
-					return npcItem.Name
-				}
+		// comaire cell with the one where are checking
+		if cell.ID == cellID {
+			// if they match return npc.Dialog
+			for _, item := range cell.Items {
+				itemInv = append(itemInv, item.ID)
 			}
 		}
 	}
-	// otherwise return blank
-	return ""
-}
-
-func checkMobDead(mobID int) bool {
-	// check each cell
-	for _, cell := range world.Cells {
-		// check mob(s) in each cell
-		for _, mob := range cell.Mobs {
-			// comaire mob(s) with the one we are checking
-			if mob.ID == mobID {
-				// if they are dead return true
-				if mob.IsDead {
-					return true
-				}
-			}
-		}
-	}
-	// otherwise return false
-	return false
-}
-
-func getMobName(mobID int) string {
-	// check each cell
-	for _, cell := range world.Cells {
-		// check mob(s) in each cell
-		for _, mob := range cell.Mobs {
-			// comaire mob(s) with the one we are checking
-			if mob.ID == mobID {
-				// if they are the same return mob.Name
-				return mob.Name
-			}
-		}
-	}
-	// otherwise return blank
-	return ""
-}
-
-func checkNpcTalked(npcID int) bool {
-	// check each cell
-	for _, cell := range world.Cells {
-		// check npc(s) in each cell
-		for _, npc := range cell.NPCs {
-			// comaire npc(s) with the one we are checking
-			if npc.ID == npcID {
-				// if they talked return true
-				if npc.HasTalked {
-					return true
-				}
-			}
-		}
-	}
-	// otherwise return false
-	return false
-}
-
-func getNpcName(npcID int) string {
-	// check each cell
-	for _, cell := range world.Cells {
-		// check npc in each cell
-		for _, npc := range cell.NPCs {
-			// comaire npcs with the one where are checking
-			if npc.ID == npcID {
-				// if they match return npc.Name
-				return npc.Name
-			}
-		}
-	}
-	// otherwise return blank
-	return ""
+	// return items
+	return itemInv
 }

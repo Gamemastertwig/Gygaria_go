@@ -26,19 +26,19 @@ func CreateGygaria() tbastory.World {
 	potion := tbastory.Item{ID: 1, Name: "Potion of Youth", Disc: "The flask holds a liquid that seems to shift colors, the longer you stare into it the more you swear you can hear children's laughter.", HP: 0, Attack: 0, Defense: 0}
 
 	// Seal of the Magi
-	seal := tbastory.Item{ID: 2, Name: "Seal of the Magi", Disc: "The seal is attached to a cord that one would wear over their neck. On one side there is a picture of a young man you do not reconize and on the other side are strange words you cannot read.", HP: 1000, Attack: 0, Defense: 0}
+	seal := tbastory.Item{ID: 2, Name: "Seal of the Magi", Disc: "The seal is attached to a cord that one would wear over their neck. On one side there is a picture of a young man you do not reconize and on the other side are strange words you cannot read.", HP: 50, Attack: 0, Defense: 0}
 
 	// Cloak of Almost Invisibility
-	cloak := tbastory.Item{ID: 3, Name: "Cloak of Almost Invisibility", Disc: "The cloak seems to reflect light in a manner that makes the wear seem invisible. Quick movements or constant observation from an onlooker makes it apperent someone or something is present, hense the 'almost'.", HP: 1000, Attack: 0, Defense: 0}
+	cloak := tbastory.Item{ID: 3, Name: "Cloak of Almost Invisibility", Disc: "The cloak seems to reflect light in a manner that makes the wear seem invisible. Quick movements or constant observation from an onlooker makes it apperent someone or something is present, hense the 'almost'.", HP: 50, Attack: 0, Defense: 0}
 
 	// Death's Coin
 	coin := tbastory.Item{ID: 4, Name: "Death's Coin", Disc: "", HP: 0, Attack: 0, Defense: 0}
 
 	// Armor of Spider Silk
-	armor := tbastory.Item{ID: 5, Name: "Armor of Spider Silk", Disc: "", HP: 0, Attack: 0, Defense: 1000}
+	armor := tbastory.Item{ID: 5, Name: "Armor of Spider Silk", Disc: "", HP: 0, Attack: 0, Defense: 10}
 
 	// Sword of Dragon's Breath
-	sword := tbastory.Item{ID: 6, Name: "Sword of Dragon's Breath", Disc: "", HP: 0, Attack: 1000, Defense: 0}
+	sword := tbastory.Item{ID: 6, Name: "Sword of Dragon's Breath", Disc: "", HP: 0, Attack: 10, Defense: 0}
 
 	// **********
 	// ** NPCs **
@@ -71,59 +71,58 @@ func CreateGygaria() tbastory.World {
 	fairyPotion.Items = append(fairyPotion.Items, seal)
 
 	// Dragon (Riddle)
-	dragon := tbastory.NPC{ID: 9, Name: "Dragon", Dialog: ""}
-	dragon.Items = append(dragon.Items, sword)
+	dragon := tbastory.NPC{ID: 9, Name: "Dragon", Dialog: "You Decided to match wits with the dragon. Deep down you really hope your ready."}
 
 	// **********
 	// ** Mobs **
 	// **********
 
 	// Orcs
-	orc1 := tbastory.Mob{ID: 1, Name: "Kargrosh", Disc: "Orc", HP: 0, Attack: 0, Defense: 0}
-	orc2 := tbastory.Mob{ID: 2, Name: "Kromeash", Disc: "Orc", HP: 0, Attack: 0, Defense: 0}
+	orc1 := tbastory.Mob{ID: 1, Name: "Kargrosh", Disc: "Orc", HP: 27, Attack: 3, Defense: 10}
+	orc2 := tbastory.Mob{ID: 2, Name: "Kromeash", Disc: "Orc", HP: 29, Attack: 3, Defense: 10}
 
 	// Cannibals
-	cannibal1 := tbastory.Mob{ID: 3, Name: "Warib Gest", Disc: "Cannibal", HP: 0, Attack: 0, Defense: 0}
-	cannibal2 := tbastory.Mob{ID: 4, Name: "Deffery Jahmer", Disc: "Cannibal", HP: 0, Attack: 0, Defense: 0}
-	cannibal3 := tbastory.Mob{ID: 5, Name: "Mtela Saris", Disc: "Cannibal", HP: 0, Attack: 0, Defense: 0}
-	cannibal4 := tbastory.Mob{ID: 6, Name: "Filbert Ash", Disc: "Cannibal", HP: 0, Attack: 0, Defense: 0}
-	cannibal5 := tbastory.Mob{ID: 7, Name: "Mermin Aiwes", Disc: "Cannibal", HP: 0, Attack: 0, Defense: 0}
+	cannibal1 := tbastory.Mob{ID: 3, Name: "Warib Gest", Disc: "Cannibal", HP: 17, Attack: 1, Defense: 14}
+	cannibal2 := tbastory.Mob{ID: 4, Name: "Deffery Jahmer", Disc: "Cannibal", HP: 12, Attack: 1, Defense: 14}
+	cannibal3 := tbastory.Mob{ID: 5, Name: "Mtela Saris", Disc: "Cannibal", HP: 18, Attack: 1, Defense: 14}
+	cannibal4 := tbastory.Mob{ID: 6, Name: "Filbert Ash", Disc: "Cannibal", HP: 16, Attack: 1, Defense: 14}
+	cannibal5 := tbastory.Mob{ID: 7, Name: "Mermin Aiwes", Disc: "Cannibal", HP: 28, Attack: 1, Defense: 14}
 
 	// Wolves
-	wolf1 := tbastory.Mob{ID: 8, Name: "Gray", Disc: "Wolf", HP: 0, Attack: 0, Defense: 0}
-	wolf2 := tbastory.Mob{ID: 9, Name: "Baga", Disc: "Wolf", HP: 0, Attack: 0, Defense: 0}
-	wolf3 := tbastory.Mob{ID: 10, Name: "Balltoe", Disc: "Wolf", HP: 0, Attack: 0, Defense: 0}
-	wolf4 := tbastory.Mob{ID: 11, Name: "Lowkey", Disc: "Wolf", HP: 0, Attack: 0, Defense: 0}
+	wolf1 := tbastory.Mob{ID: 8, Name: "Gray", Disc: "Wolf", HP: 13, Attack: 2, Defense: 15}
+	wolf2 := tbastory.Mob{ID: 9, Name: "Baga", Disc: "Wolf", HP: 12, Attack: 2, Defense: 15}
+	wolf3 := tbastory.Mob{ID: 10, Name: "Balltoe", Disc: "Wolf", HP: 13, Attack: 2, Defense: 15}
+	wolf4 := tbastory.Mob{ID: 11, Name: "Lowkey", Disc: "Wolf", HP: 15, Attack: 2, Defense: 15}
 
 	// Sleep
-	sleep := tbastory.Mob{ID: 25, Name: "Slumber", Disc: "Unnatural Sleep", HP: 0, Attack: 0, Defense: 0}
+	sleep := tbastory.Mob{ID: 25, Name: "Slumber", Disc: "Unnatural Sleep", HP: 45, Attack: 4, Defense: 16}
 
 	// Demon
-	demonAttack := tbastory.Mob{ID: 27, Name: "Harry", Disc: "Demon", HP: 0, Attack: 0, Defense: 0}
+	demonAttack := tbastory.Mob{ID: 27, Name: "Harry", Disc: "Demon", HP: 39, Attack: 6, Defense: 16}
 	demonAttack.Items = append(demonAttack.Items, potion)
 
 	// Skeletons
-	skele1 := tbastory.Mob{ID: 28, Name: "Jaeke", Disc: "Skeleton", HP: 0, Attack: 0, Defense: 0}
-	skele2 := tbastory.Mob{ID: 15, Name: "Le-bone-ski", Disc: "Skeleton", HP: 0, Attack: 0, Defense: 0}
+	skele1 := tbastory.Mob{ID: 28, Name: "Jaeke", Disc: "Skeleton", HP: 21, Attack: 2, Defense: 14}
+	skele2 := tbastory.Mob{ID: 15, Name: "Le-bone-ski", Disc: "Skeleton", HP: 22, Attack: 3, Defense: 15}
 	skele2.Items = append(skele2.Items, cloak)
 
 	// Sandworm
-	sandworm := tbastory.Mob{ID: 16, Name: "Sandy", Disc: "Sandworm", HP: 0, Attack: 0, Defense: 0}
+	sandworm := tbastory.Mob{ID: 16, Name: "Sandy", Disc: "Sandworm", HP: 55, Attack: 7, Defense: 15}
 
 	// Zombie
-	zombie := tbastory.Mob{ID: 29, Name: "Stiff McBrains", Disc: "Zombie", HP: 0, Attack: 0, Defense: 0}
+	zombie := tbastory.Mob{ID: 29, Name: "Stiff McBrains", Disc: "Zombie", HP: 32, Attack: 3, Defense: 12}
 	zombie.Items = append(zombie.Items, coin)
 
 	// Giant Spider
-	spider := tbastory.Mob{ID: 30, Name: "Arragogy", Disc: "Giant Spider", HP: 0, Attack: 0, Defense: 0}
+	spider := tbastory.Mob{ID: 30, Name: "Arragogy", Disc: "Giant Spider", HP: 27, Attack: 3, Defense: 14}
 	spider.Items = append(spider.Items, armor)
 
 	// Dragon
-	dragonAttack := tbastory.Mob{ID: 31, Name: "Dr. Agon", Disc: "Dragon", HP: 0, Attack: 0, Defense: 0}
+	dragonAttack := tbastory.Mob{ID: 31, Name: "Dr. Agon", Disc: "Dragon", HP: 152, Attack: 16, Defense: 24}
 	dragonAttack.Items = append(dragonAttack.Items, sword)
 
 	// Wizard
-	wizardAttack := tbastory.Mob{ID: 20, Name: "The Mad Mastermind", Disc: "Wizard", HP: 0, Attack: 0, Defense: 0}
+	wizardAttack := tbastory.Mob{ID: 20, Name: "The Mad Mastermind", Disc: "Wizard", HP: 110, Attack: 12, Defense: 18}
 
 	// *******************
 	// ** Cells (Start) **
@@ -139,10 +138,10 @@ func CreateGygaria() tbastory.World {
 	orcCampEmpty := tbastory.MapCell{ID: 2, Title: "Orc Camp (Empty)", Disc: "You see many small huts that are shabbily made. They are just a bit more 'shably' after your fight with the orcs that used to live here."}
 
 	// Castle Courtyard
-	castleCourtyard := tbastory.MapCell{ID: 3, Title: "", Disc: "As you progress onward, you see that the small castle. There is a large monument with a glowing blue center. As you get closer to the castle, there is a large glowing barrier where the door is at as well. It blocks you from entering the castle."}
+	castleCourtyard := tbastory.MapCell{ID: 3, Title: "Castle Courtyard", Disc: "As you progress onward, you see that the small castle. There is a large monument with a glowing blue center. As you get closer to the castle, there is a large glowing barrier where the door is at as well. It blocks you from entering the castle."}
 
 	// Castle Courtyard (Seal)
-	castleCourtyardSeal := tbastory.MapCell{ID: 4, Title: "", Disc: "As you progress onward, you see that the small castle. There is a large monument with a glowing blue center. As you get closer to the castle, there is a large glowing barrier where the door is at as well. When the seal is brought close the runes begin to fade and you can OPEN the door."}
+	castleCourtyardSeal := tbastory.MapCell{ID: 4, Title: "Castle Courtyard (Seal)", Disc: "As you progress onward, you see that the small castle. There is a large monument with a glowing blue center. As you get closer to the castle, there is a large glowing barrier where the door is at as well. When the seal is brought close the runes begin to fade and you can OPEN the door."}
 
 	// Castle
 	castle := tbastory.MapCell{ID: 5, Title: "Castle", Disc: "You are now inside the castle having completed most of your quest. You have beaten a dragon, talked with a demon, slain a zombie and cannibals as well. So many foes have vanquished before you, but so close to the end, you know your most difficult battle is before you. In this royal palace, it is covered in luxury. With large statues and comfortable thrones. A young wizard sits on the largest throne, as you make eye contact he begins to speak. How dare you enter my castle... and with those dirty boots! I made this castle from the ground up and do you show respect? No, you just tromp all around like you're the king. I cannot believe the nerve of you... I mean honestly. Ugh! I'm the most powerful wizard in the land and you are just a worm. I have killed stronger men then you in my sl... (Before he gets a chance to finish his monologue you take a good slice out of his arm.)"}
@@ -305,6 +304,9 @@ func CreateGygaria() tbastory.World {
 	// Dragon's Lair (Empty)
 	dragonLairEmpty := tbastory.MapCell{ID: 48, Title: "Dragon's Lair (Empty)", Disc: "You have come to a cave. It is a lot warmer than you would have expected from a cave this size and being located this close to the ocean. Smell of decay is heavy in the air and ground is littered with mangled corpses. Oddly the bones are bare although most have large incisions from what appears to be very large teeth. There is nothing left of interest here, you should probably turn back."}
 
+	// Dragon's Lair (End)
+	dragonLairEnd := tbastory.MapCell{ID: 53, Title: "The End", Disc: "You failed to answer the Dragon correctly. He replies, 'I am board with these games' and with a quick flash of his teeth he swallows you whole. Maybe next time you'll make sure to know the answer before matching wits with an ancient and highly intellegent being."}
+
 	// Docks
 	docks := tbastory.MapCell{ID: 49, Title: "Docks", Disc: "As you approach the docks you see a young man who is frantic. Upon inquiry he tells you he is short a crew man and can't make his voyage without the extra man power. He offers you a healthy sum of gold to join his expedition. In doing so you could effectively disregard your troubles in finding the princess and become a seaman. Besides heroes are overrated... or are they? You could JOIN the captain for a life on the sea."}
 
@@ -376,6 +378,11 @@ func CreateGygaria() tbastory.World {
 	// Add conns
 	castle.Conns = append(castle.Conns, conn12)
 
+	// Castle (END) (6)
+	conn180 := tbastory.MapConn{ID: 180, Name: "END", StartCellID: 6, EndCellID: 0}
+	// Add conns
+	castleEnd.Conns = append(castleEnd.Conns, conn180)
+
 	// Land Slide (7)
 	// EAST
 	conn13 := tbastory.MapConn{ID: 13, Name: "EAST", StartCellID: 7, EndCellID: 8}
@@ -384,9 +391,9 @@ func CreateGygaria() tbastory.World {
 	conn14.RecItemIDs = append(conn14.RecItemIDs, potion.ID)
 	conn14.RecNPCIDs = append(conn14.RecNPCIDs, demon.ID)
 	// SOUTH (if demonAttack && !demonDeal)
-	conn15 := tbastory.MapConn{ID: 15, Name: "SOUTH", StartCellID: 7, EndCellID: 17, NeedNotItem: true, NeedNPCNoTalk: true}
+	conn15 := tbastory.MapConn{ID: 15, Name: "SOUTH", StartCellID: 7, EndCellID: 17, NeedNotItem: true, NeedNPCTalk: true}
 	conn15.RecItemIDs = append(conn15.RecItemIDs, potion.ID)
-	conn15.RecNPCIDs = append(conn15.RecNPCIDs, demonDeal.ID)
+	conn15.RecNPCIDs = append(conn15.RecNPCIDs, demon.ID)
 	// SOUTH (if !demon)
 	conn16 := tbastory.MapConn{ID: 16, Name: "SOUTH", StartCellID: 7, EndCellID: 18, NeedItem: true}
 	conn16.RecItemIDs = append(conn16.RecItemIDs, potion.ID)
@@ -481,9 +488,9 @@ func CreateGygaria() tbastory.World {
 	conn36.RecItemIDs = append(conn36.RecItemIDs, potion.ID)
 	conn36.RecNPCIDs = append(conn36.RecNPCIDs, demon.ID)
 	// EAST (if demonAttack && !demonDeal)
-	conn37 := tbastory.MapConn{ID: 37, Name: "EAST", StartCellID: 13, EndCellID: 17, NeedNotItem: true, NeedNPCNoTalk: true}
+	conn37 := tbastory.MapConn{ID: 37, Name: "EAST", StartCellID: 13, EndCellID: 17, NeedNotItem: true, NeedNPCTalk: true}
 	conn37.RecItemIDs = append(conn37.RecItemIDs, potion.ID)
-	conn37.RecNPCIDs = append(conn37.RecNPCIDs, demonDeal.ID)
+	conn37.RecNPCIDs = append(conn37.RecNPCIDs, demon.ID)
 	// EAST (if !demon)
 	conn38 := tbastory.MapConn{ID: 38, Name: "EAST", StartCellID: 13, EndCellID: 18, NeedItem: true}
 	conn38.RecItemIDs = append(conn38.RecItemIDs, potion.ID)
@@ -511,9 +518,9 @@ func CreateGygaria() tbastory.World {
 	conn44.RecItemIDs = append(conn44.RecItemIDs, potion.ID)
 	conn44.RecNPCIDs = append(conn44.RecNPCIDs, demon.ID)
 	// EAST (if demonAttack && !demonDeal)
-	conn45 := tbastory.MapConn{ID: 45, Name: "EAST", StartCellID: 15, EndCellID: 17, NeedNotItem: true, NeedNPCNoTalk: true}
+	conn45 := tbastory.MapConn{ID: 45, Name: "EAST", StartCellID: 15, EndCellID: 17, NeedNotItem: true, NeedNPCTalk: true}
 	conn45.RecItemIDs = append(conn45.RecItemIDs, potion.ID)
-	conn45.RecNPCIDs = append(conn45.RecNPCIDs, demonDeal.ID)
+	conn45.RecNPCIDs = append(conn45.RecNPCIDs, demon.ID)
 	// EAST (if !demon)
 	conn46 := tbastory.MapConn{ID: 46, Name: "EAST", StartCellID: 15, EndCellID: 18, NeedItem: true}
 	conn46.RecItemIDs = append(conn46.RecItemIDs, potion.ID)
@@ -613,9 +620,9 @@ func CreateGygaria() tbastory.World {
 	conn73.RecItemIDs = append(conn73.RecItemIDs, potion.ID)
 	conn73.RecNPCIDs = append(conn73.RecNPCIDs, demon.ID)
 	// WEST (if demonAttack && !demonDeal)
-	conn74 := tbastory.MapConn{ID: 74, Name: "WEST", StartCellID: 19, EndCellID: 17, NeedNotItem: true, NeedNPCNoTalk: true}
+	conn74 := tbastory.MapConn{ID: 74, Name: "WEST", StartCellID: 19, EndCellID: 17, NeedNotItem: true, NeedNPCTalk: true}
 	conn74.RecItemIDs = append(conn74.RecItemIDs, potion.ID)
-	conn74.RecNPCIDs = append(conn74.RecNPCIDs, demonDeal.ID)
+	conn74.RecNPCIDs = append(conn74.RecNPCIDs, demon.ID)
 	// WEST (if !demon)
 	conn75 := tbastory.MapConn{ID: 75, Name: "WEST", StartCellID: 19, EndCellID: 18, NeedItem: true}
 	conn75.RecItemIDs = append(conn75.RecItemIDs, potion.ID)
@@ -660,6 +667,11 @@ func CreateGygaria() tbastory.World {
 	// Add conns
 	boneyardEmpty.Conns = append(boneyardEmpty.Conns, conn82, conn83, conn84, conn85)
 
+	// Boneyard (END) (23)
+	conn179 := tbastory.MapConn{ID: 179, Name: "END", StartCellID: 23, EndCellID: 0}
+	// Add conns
+	boneyardEnd.Conns = append(boneyardEnd.Conns, conn179)
+
 	// Fairy Glade (24)
 	// EAST
 	conn86 := tbastory.MapConn{ID: 86, Name: "EAST", StartCellID: 24, EndCellID: 27}
@@ -673,17 +685,19 @@ func CreateGygaria() tbastory.World {
 	// EAST
 	conn88 := tbastory.MapConn{ID: 88, Name: "EAST", StartCellID: 25, EndCellID: 27}
 	// TALK (if !potion)
-	conn89 := tbastory.MapConn{ID: 89, Name: "TALK", StartCellID: 25, EndCellID: 25, NeedNotItem: true}
+	conn89 := tbastory.MapConn{ID: 89, Name: "TALK", StartCellID: 25, EndCellID: 25, NeedNotItem: true, NeedNPCNoTalk: true}
 	conn89.RecItemIDs = append(conn89.RecItemIDs, potion.ID)
+	conn89.RecNPCIDs = append(conn89.RecNPCIDs, fairyBefore.ID)
 	// Add conns
 	gladeQuest.Conns = append(gladeQuest.Conns, conn88, conn89)
 
 	// Fairy Glade (Potion) (26)
 	// EAST
-	conn90 := tbastory.MapConn{ID: 1.0, Name: "EAST", StartCellID: 26, EndCellID: 27}
+	conn90 := tbastory.MapConn{ID: 90, Name: "EAST", StartCellID: 26, EndCellID: 27}
 	// TALK (if potion)
-	conn91 := tbastory.MapConn{ID: 1.0, Name: "TALK", StartCellID: 26, EndCellID: 24, NeedItem: true}
+	conn91 := tbastory.MapConn{ID: 91, Name: "TALK", StartCellID: 26, EndCellID: 24, NeedItem: true, NeedNPCNoTalk: true}
 	conn91.RecItemIDs = append(conn91.RecItemIDs, potion.ID)
+	conn91.RecNPCIDs = append(conn91.RecNPCIDs, fairyPotion.ID)
 	// Add conns
 	gladePotion.Conns = append(gladePotion.Conns, conn90, conn91)
 
@@ -706,10 +720,11 @@ func CreateGygaria() tbastory.World {
 
 	// Crystal Lake (Quest) (28)
 	// EAST (29)
-	conn96 := tbastory.MapConn{ID: 96, Name: "EAST", StartCellID: 28, EndCellID: 25}
+	conn96 := tbastory.MapConn{ID: 96, Name: "EAST", StartCellID: 28, EndCellID: 29}
 	// TALK (28) (if !coin)
-	conn97 := tbastory.MapConn{ID: 97, Name: "TALK", StartCellID: 28, EndCellID: 28, NeedNotItem: true}
+	conn97 := tbastory.MapConn{ID: 97, Name: "TALK", StartCellID: 28, EndCellID: 28, NeedNotItem: true, NeedNPCNoTalk: true}
 	conn97.RecItemIDs = append(conn97.RecItemIDs, coin.ID)
+	conn97.RecNPCIDs = append(conn97.RecNPCIDs, death.ID)
 	// Add conns
 	lakeQuest.Conns = append(lakeQuest.Conns, conn96, conn97)
 
@@ -786,20 +801,27 @@ func CreateGygaria() tbastory.World {
 	// SOUTH
 	conn116 := tbastory.MapConn{ID: 116, Name: "SOUTH", StartCellID: 33, EndCellID: 44}
 	// TAKE
-	conn117 := tbastory.MapConn{ID: 117, Name: "SOUTH", StartCellID: 33, EndCellID: 34}
+	conn117 := tbastory.MapConn{ID: 117, Name: "TAKE", StartCellID: 33, EndCellID: 34}
 	// Add conns
 	hovel.Conns = append(hovel.Conns, conn114, conn115, conn116, conn117)
+
+	// Grave Keeper's Hovel (END) (34)
+	conn178 := tbastory.MapConn{ID: 178, Name: "END", StartCellID: 34, EndCellID: 0}
+	// Add conns
+	hovelEnd.Conns = append(hovelEnd.Conns, conn178)
 
 	// Town Graveyard (35)
 	// EAST (if oldMan && lady)
 	conn118 := tbastory.MapConn{ID: 118, Name: "EAST", StartCellID: 35, EndCellID: 38, NeedNPCTalk: true}
 	conn118.RecNPCIDs = append(conn118.RecNPCIDs, oldMan.ID, lady.ID)
 	// EAST (if !armor)
-	conn119 := tbastory.MapConn{ID: 119, Name: "EAST", StartCellID: 35, EndCellID: 39, NeedNotItem: true}
+	conn119 := tbastory.MapConn{ID: 119, Name: "EAST", StartCellID: 35, EndCellID: 39, NeedNotItem: true, NeedNPCNoTalk: true}
 	conn119.RecItemIDs = append(conn119.RecItemIDs, armor.ID)
+	conn119.RecNPCIDs = append(conn119.RecNPCIDs, oldMan.ID)
 	// EAST (if !sword && !cloak)
-	conn120 := tbastory.MapConn{ID: 120, Name: "EAST", StartCellID: 35, EndCellID: 40, NeedNotItem: true}
+	conn120 := tbastory.MapConn{ID: 120, Name: "EAST", StartCellID: 35, EndCellID: 40, NeedNotItem: true, NeedNPCTalk: true}
 	conn120.RecItemIDs = append(conn120.RecItemIDs, sword.ID, cloak.ID)
+	conn120.RecNPCIDs = append(conn120.RecNPCIDs, oldMan.ID)
 	// WEST
 	conn121 := tbastory.MapConn{ID: 121, Name: "WEST", StartCellID: 35, EndCellID: 33}
 	// INSPECT
@@ -820,11 +842,13 @@ func CreateGygaria() tbastory.World {
 	conn124 := tbastory.MapConn{ID: 124, Name: "EAST", StartCellID: 37, EndCellID: 38, NeedNPCTalk: true}
 	conn124.RecNPCIDs = append(conn124.RecNPCIDs, oldMan.ID, lady.ID)
 	// EAST (if !armor)
-	conn125 := tbastory.MapConn{ID: 125, Name: "EAST", StartCellID: 37, EndCellID: 39, NeedNotItem: true}
+	conn125 := tbastory.MapConn{ID: 125, Name: "EAST", StartCellID: 37, EndCellID: 39, NeedNotItem: true, NeedNPCNoTalk: true}
 	conn125.RecItemIDs = append(conn125.RecItemIDs, armor.ID)
+	conn125.RecNPCIDs = append(conn125.RecNPCIDs, oldMan.ID)
 	// EAST (if !sword && !cloak)
-	conn126 := tbastory.MapConn{ID: 126, Name: "EAST", StartCellID: 37, EndCellID: 40, NeedNotItem: true}
+	conn126 := tbastory.MapConn{ID: 126, Name: "EAST", StartCellID: 37, EndCellID: 40, NeedNotItem: true, NeedNPCTalk: true}
 	conn126.RecItemIDs = append(conn126.RecItemIDs, sword.ID, cloak.ID)
+	conn126.RecNPCIDs = append(conn126.RecNPCIDs, oldMan.ID)
 	// WEST
 	conn127 := tbastory.MapConn{ID: 127, Name: "WEST", StartCellID: 37, EndCellID: 33}
 	// Add conns
@@ -899,11 +923,13 @@ func CreateGygaria() tbastory.World {
 	conn149 := tbastory.MapConn{ID: 149, Name: "WEST", StartCellID: 41, EndCellID: 38, NeedNPCTalk: true}
 	conn149.RecNPCIDs = append(conn149.RecNPCIDs, oldMan.ID, lady.ID)
 	// WEST (if !armor)
-	conn150 := tbastory.MapConn{ID: 150, Name: "WEST", StartCellID: 41, EndCellID: 39, NeedNotItem: true}
+	conn150 := tbastory.MapConn{ID: 150, Name: "WEST", StartCellID: 41, EndCellID: 39, NeedNotItem: true, NeedNPCNoTalk: true}
 	conn150.RecItemIDs = append(conn150.RecItemIDs, armor.ID)
+	conn150.RecNPCIDs = append(conn150.RecNPCIDs, oldMan.ID)
 	// WEST (if !sword && !cloak)
-	conn151 := tbastory.MapConn{ID: 151, Name: "WEST", StartCellID: 41, EndCellID: 40, NeedNotItem: true}
+	conn151 := tbastory.MapConn{ID: 151, Name: "WEST", StartCellID: 41, EndCellID: 40, NeedNotItem: true, NeedNPCTalk: true}
 	conn151.RecItemIDs = append(conn151.RecItemIDs, sword.ID, cloak.ID)
+	conn151.RecNPCIDs = append(conn151.RecNPCIDs, oldMan.ID)
 	// Add conns
 	farm.Conns = append(farm.Conns, conn145, conn146, conn147, conn148, conn149, conn150, conn151)
 
@@ -932,8 +958,9 @@ func CreateGygaria() tbastory.World {
 	// EAST
 	conn156 := tbastory.MapConn{ID: 156, Name: "EAST", StartCellID: 45, EndCellID: 49}
 	// TALK
-	conn157 := tbastory.MapConn{ID: 157, Name: "TALK", StartCellID: 45, EndCellID: 46, NeedNotItem: true}
+	conn157 := tbastory.MapConn{ID: 157, Name: "TALK", StartCellID: 45, EndCellID: 46, NeedNotItem: true, NeedNPCNoTalk: true}
 	conn157.RecItemIDs = append(conn157.RecItemIDs, sword.ID)
+	conn157.RecNPCIDs = append(conn157.RecNPCIDs, dragon.ID)
 	// SNEAK (if cloak)
 	conn158 := tbastory.MapConn{ID: 158, Name: "SNEAK", StartCellID: 45, EndCellID: 47, NeedItem: true}
 	conn158.RecItemIDs = append(conn157.RecItemIDs, cloak.ID)
@@ -967,16 +994,24 @@ func CreateGygaria() tbastory.World {
 	// Add conns
 	dragonLairEmpty.Conns = append(dragonLairEmpty.Conns, conn165)
 
+	// Dragon's Lair (End) (53)
+	// END
+	conn181 := tbastory.MapConn{ID: 181, Name: "END", StartCellID: 53, EndCellID: 0}
+	// Add conns
+	dragonLairEnd.Conns = append(dragonLairEnd.Conns, conn181)
+
 	// Docks (49)
 	// NORTH (if oldMan && lady)
 	conn166 := tbastory.MapConn{ID: 166, Name: "NORTH", StartCellID: 49, EndCellID: 38, NeedNPCTalk: true}
 	conn166.RecNPCIDs = append(conn166.RecNPCIDs, oldMan.ID, lady.ID)
 	// NORTH (if !armor)
-	conn167 := tbastory.MapConn{ID: 167, Name: "NORTH", StartCellID: 49, EndCellID: 39, NeedNotItem: true}
+	conn167 := tbastory.MapConn{ID: 167, Name: "NORTH", StartCellID: 49, EndCellID: 39, NeedNotItem: true, NeedNPCNoTalk: true}
 	conn167.RecItemIDs = append(conn167.RecItemIDs, armor.ID)
+	conn167.RecNPCIDs = append(conn167.RecNPCIDs, oldMan.ID)
 	// NORTH (if !sword && !cloak)
-	conn168 := tbastory.MapConn{ID: 168, Name: "NORTH", StartCellID: 49, EndCellID: 40, NeedNotItem: true}
+	conn168 := tbastory.MapConn{ID: 168, Name: "NORTH", StartCellID: 49, EndCellID: 40, NeedNotItem: true, NeedNPCTalk: true}
 	conn168.RecItemIDs = append(conn168.RecItemIDs, sword.ID, cloak.ID)
+	conn168.RecNPCIDs = append(conn168.RecNPCIDs, oldMan.ID)
 	// EAST
 	conn169 := tbastory.MapConn{ID: 169, Name: "EAST", StartCellID: 49, EndCellID: 51}
 	// WEST (if !sword)
@@ -990,6 +1025,12 @@ func CreateGygaria() tbastory.World {
 	// Add conns
 	docks.Conns = append(docks.Conns, conn166, conn167, conn168, conn169, conn170, conn171, conn172)
 
+	// Docks (END) (50)
+	// END
+	conn177 := tbastory.MapConn{ID: 177, Name: "END", StartCellID: 50, EndCellID: 0}
+	// Add conns
+	docksEnd.Conns = append(docksEnd.Conns, conn177)
+
 	// Ocean (51)
 	// NORTH
 	conn173 := tbastory.MapConn{ID: 173, Name: "NORTH", StartCellID: 51, EndCellID: 41}
@@ -998,13 +1039,13 @@ func CreateGygaria() tbastory.World {
 	// WEST
 	conn175 := tbastory.MapConn{ID: 175, Name: "WEST", StartCellID: 51, EndCellID: 49}
 	// Add conns
-	village.Conns = append(village.Conns, conn173, conn174, conn175)
+	ocean.Conns = append(ocean.Conns, conn173, conn174, conn175)
 
 	// Cliff (52)
 	// WEST
 	conn176 := tbastory.MapConn{ID: 176, Name: "WEST", StartCellID: 52, EndCellID: 51}
 	// Add conns
-	village.Conns = append(village.Conns, conn176)
+	cliff.Conns = append(cliff.Conns, conn176)
 
 	// *****************
 	// ** Cells (End) **
@@ -1154,6 +1195,9 @@ func CreateGygaria() tbastory.World {
 	// Dragon's Lair (Empty)
 	gygaria.Cells = append(gygaria.Cells, dragonLairEmpty)
 
+	// Dragon's Lair (End)
+	gygaria.Cells = append(gygaria.Cells, dragonLairEnd)
+
 	// Docks
 	gygaria.Cells = append(gygaria.Cells, docks)
 
@@ -1174,9 +1218,9 @@ func CreatePlayer() tbastory.Player {
 	var player tbastory.Player
 
 	player.Name = "Player"
-	player.HP = 100
-	player.Attack = 20
-	player.Defense = 20
+	player.HP = 50
+	player.Attack = 5
+	player.Defense = 15
 	player.CLocID = 39
 	player.PLocID = 0
 
